@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-
         * {
             margin: 0;
             padding: 0;
@@ -15,8 +14,8 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -27,90 +26,99 @@
         .form-container {
             background: white;
             width: 100%;
-            max-width: 460px;
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            max-width: 420px;
+            border-radius: 28px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
             overflow: hidden;
+            border: 1px solid #e5e7eb;
         }
 
         .form-header {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
             color: white;
-            padding: 35px 30px;
+            padding: 40px 30px;
             text-align: center;
         }
 
         .form-header h1 {
             font-size: 28px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 8px;
         }
 
         .form-header p {
-            font-size: 15px;
-            opacity: 0.9;
+            font-size: 15.5px;
+            opacity: 0.92;
+            font-weight: 400;
         }
 
         .form-body {
-            padding: 40px 35px;
+            padding: 40px 32px;
         }
 
         .input-group {
-            margin-bottom: 22px;
+            margin-bottom: 26px;
         }
 
         label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 9px;
             font-weight: 500;
-            color: #333;
-            font-size: 14px;
+            color: #374151;
+            font-size: 15px;
         }
 
         input,
         textarea {
             width: 100%;
-            padding: 14px 16px;
-            border: 2px solid #e1e1e1;
-            border-radius: 12px;
+            padding: 16px 18px;
+            border: 1.5px solid #d1d5db;
+            border-radius: 16px;
             font-size: 16px;
+            font-family: 'Roboto', sans-serif;
+            background: #f9fafb;
             transition: all 0.3s ease;
-            font-family: 'Poppins', sans-serif;
         }
 
         input:focus,
         textarea:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            border-color: #3b82f6;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
         }
 
         textarea {
-            min-height: 110px;
+            min-height: 125px;
             resize: vertical;
         }
 
         .submit-btn {
             width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 17px;
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
             color: white;
             border: none;
-            border-radius: 12px;
-            font-size: 18px;
+            border-radius: 16px;
+            font-size: 17px;
             font-weight: 600;
             cursor: pointer;
             margin-top: 10px;
             transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.25);
         }
 
         .submit-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 12px 30px rgba(59, 130, 246, 0.35);
+        }
+
+        .submit-btn:active {
+            transform: scale(0.98);
         }
 
         .required {
-            color: #e74c3c;
+            color: #ef4444;
         }
     </style>
 </head>
@@ -120,8 +128,8 @@
     <div class="form-container">
         <!-- Header -->
         <div class="form-header">
-            <h1>Get In Touch</h1>
-            <p>We'd love to hear from you!</p>
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you. Reach out anytime.</p>
         </div>
 
         <!-- Form Body -->
@@ -130,7 +138,7 @@
 
                 <div class="input-group">
                     <label for="name">Full Name <span class="required">*</span></label>
-                    <input type="text" id="name" required placeholder="Enter your name">
+                    <input type="text" id="name" required placeholder="Enter your full name">
                 </div>
 
                 <div class="input-group">
@@ -148,19 +156,29 @@
                     <textarea id="message" required placeholder="Write your message here..."></textarea>
                 </div>
 
-                <button type="submit" class="submit-btn">Submit Form</button>
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    Submit
+                </button>
             </form>
         </div>
     </div>
 
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
+        const form = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            // You can add form validation or data collection here if needed
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
 
-            // Redirect to the website after submission
-            window.location.href = "https://www.tomazinakfe.com";
+            // Simulate form processing (you can replace this with actual form submission logic)
+            setTimeout(() => {
+                // Directly navigate to the website after "submission"
+                window.location.href = "https://www.tomazinakfe.com";
+            }, 1200);
         });
     </script>
 
